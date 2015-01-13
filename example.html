@@ -11,23 +11,29 @@
 <script>
     (function () {
         YoutubeTracker('.track-youtube-embed', {
-            'unstarted': function () {
-                console.log('Status is "unstarted"');
+            'unstarted': function (videoId) {
+                console.log('Status is "unstarted" for video "' + videoId + '"');
+                // Ping your tracker
             },
-            'ended': function () {
-                console.log('Status is "ended"');
+            'ended': function (videoId) {
+                console.log('Status is "ended" for video "' + videoId + '"');
+                // Ping your tracker
             },
-            'playing': function () {
-                console.log('Status is "playing"');
+            'playing': function (videoId) {
+                console.log('Status is "playing" for video "' + videoId + '"');
+                // Ping your tracker
             },
-            'paused': function () {
-                console.log('Status is "paused"');
+            'paused': function (videoId) {
+                console.log('Status is "paused" for video "' + videoId + '"');
+                // Ping your tracker
             },
-            'buffering': function () {
-                console.log('Status is "buffering"');
+            'buffering': function (videoId) {
+                console.log('Status is "buffering" for video "' + videoId + '"');
+                // Ping your tracker
             },
-            'video cued': function () {
-                console.log('Status is "video cued"');
+            'video cued': function (videoId) {
+                console.log('Status is "video cued" for video "' + videoId + '"');
+                // Ping your tracker
             }
         });
     })();

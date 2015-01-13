@@ -63,6 +63,8 @@ window.YoutubeTracker = function (selector, eventCallbacks) {
                 iframe.src = iframe.src + (iframe.src.indexOf('?') < 0 ? '?enablejsapi=1' : '&enablejsapi=1');
             }
 
+            var videoId = getVideoIdFromUrl(iframe.src);
+
             var player = new YT.Player(iframe, {
                 events: {
                     'onReady': function (e) {
@@ -72,7 +74,7 @@ window.YoutubeTracker = function (selector, eventCallbacks) {
                         var state = e.data;
                         var stateName = getStateName(state);
 
-                        callbacks[stateName]();
+                        callbacks[stateName](videoId);
                     }
                 }
             });
@@ -94,6 +96,18 @@ window.YoutubeTracker = function (selector, eventCallbacks) {
         }
 
         return null;
+    };
+
+    var getVideoIdFromUrl = function (url) {
+
+        var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        var match = url.match(regExp);
+
+        if (match && match[2].length == 11) {
+            return match[2];
+        } else {
+            return 'Error parsing video ID from URL';
+        }
     };
 
     init();

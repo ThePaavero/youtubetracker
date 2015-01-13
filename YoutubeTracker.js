@@ -63,8 +63,6 @@ window.YoutubeTracker = function (selector, eventCallbacks) {
                 iframe.src = iframe.src + (iframe.src.indexOf('?') < 0 ? '?enablejsapi=1' : '&enablejsapi=1');
             }
 
-            var videoId = getVideoIdFromUrl(iframe.src);
-
             var player = new YT.Player(iframe, {
                 events: {
                     'onReady': function (e) {
@@ -74,7 +72,7 @@ window.YoutubeTracker = function (selector, eventCallbacks) {
                         var state = e.data;
                         var stateName = getStateName(state);
 
-                        callbacks[stateName](videoId);
+                        callbacks[stateName](e.target.getVideoData());
                     }
                 }
             });

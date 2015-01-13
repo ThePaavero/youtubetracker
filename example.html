@@ -11,28 +11,28 @@
 <script>
     (function () {
         YoutubeTracker('.track-youtube-embed', {
-            'unstarted': function (videoId) {
-                console.log('Status is "unstarted" for video "' + videoId + '"');
+            'unstarted': function (videoData) {
+                console.log('Status is "unstarted" for video "' + videoData.title + '"');
                 // Ping your tracker
             },
-            'ended': function (videoId) {
-                console.log('Status is "ended" for video "' + videoId + '"');
+            'ended': function (videoData) {
+                console.log('Status is "ended" for video "' + videoData.title + '"');
                 // Ping your tracker
             },
-            'playing': function (videoId) {
-                console.log('Status is "playing" for video "' + videoId + '"');
+            'playing': function (videoData) {
+                console.log('Status is "playing" for video "' + videoData.title + '"');
                 // Ping your tracker
             },
-            'paused': function (videoId) {
-                console.log('Status is "paused" for video "' + videoId + '"');
+            'paused': function (videoData) {
+                console.log('Status is "paused" for video "' + videoData.title + '"');
                 // Ping your tracker
             },
-            'buffering': function (videoId) {
-                console.log('Status is "buffering" for video "' + videoId + '"');
+            'buffering': function (videoData) {
+                console.log('Status is "buffering" for video "' + videoData.title + '"');
                 // Ping your tracker
             },
-            'video cued': function (videoId) {
-                console.log('Status is "video cued" for video "' + videoId + '"');
+            'video cued': function (videoData) {
+                console.log('Status is "video cued" for video "' + videoData.title + '"');
                 // Ping your tracker
             }
         });

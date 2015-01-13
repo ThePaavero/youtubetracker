@@ -10,7 +10,26 @@
 <iframe class='track-youtube-embed' width="560" height="315" src="//www.youtube.com/embed/dXqWJtWmceo" frameborder="0" allowfullscreen></iframe>
 <script>
     (function () {
-        YoutubeTracker('.track-youtube-embed');
+        YoutubeTracker('.track-youtube-embed', {
+            'unstarted': function () {
+                console.log('Status is "unstarted"');
+            },
+            'ended': function () {
+                console.log('Status is "ended"');
+            },
+            'playing': function () {
+                console.log('Status is "playing"');
+            },
+            'paused': function () {
+                console.log('Status is "paused"');
+            },
+            'buffering': function () {
+                console.log('Status is "buffering"');
+            },
+            'video cued': function () {
+                console.log('Status is "video cued"');
+            }
+        });
     })();
 </script>
 </body>

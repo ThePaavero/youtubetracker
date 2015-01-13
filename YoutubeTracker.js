@@ -1,7 +1,29 @@
-window.YoutubeTracker = function (selector) {
+window.YoutubeTracker = function (selector, eventCallbacks) {
 
     var iframes;
     var players = [];
+    var events = {
+        '-1': 'unstarted',
+        '0': 'ended',
+        '1': 'playing',
+        '2': 'paused',
+        '3': 'buffering',
+        '5': 'video cued'
+    };
+    var callbacks = {};
+
+    for (var i in events) {
+
+        var name = events[i];
+
+        if (typeof eventCallbacks[name] === 'function') {
+            callbacks[name] = eventCallbacks[name];
+        } else {
+            callbacks[name] = function () {
+                // ...
+            };
+        }
+    }
 
     var init = function () {
 
@@ -37,24 +59,41 @@ window.YoutubeTracker = function (selector) {
             var iframe = iframes[i];
 
             // Add the "" to our src URL
-            iframe.src = iframe.src + (iframe.src.indexOf('?') < 0 ? '?enablejsapi=1' : '&enablejsapi=1');
+            if (iframe.src.indexOf('enablejsapi') < 0) {
+                iframe.src = iframe.src + (iframe.src.indexOf('?') < 0 ? '?enablejsapi=1' : '&enablejsapi=1');
+            }
 
             var player = new YT.Player(iframe, {
                 events: {
                     'onReady': function (e) {
-                        console.log('Player ready');
+                        // ...
                     },
                     'onStateChange': function (e) {
                         var state = e.data;
-                        console.log(state);
+                        var stateName = getStateName(state);
+
+                        callbacks[stateName]();
                     }
                 }
             });
 
             players.push(player);
         }
+    };
 
-        console.log(players);
+    var getStateName = function (state) {
+
+        state = String(state);
+
+        for (var i in events) {
+            var code = i;
+            var name = events[i];
+            if (code === state) {
+                return name;
+            }
+        }
+
+        return null;
     };
 
     init();

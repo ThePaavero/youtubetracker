@@ -66,3 +66,40 @@ This simple script is supposed to make tracking your embeds as easy as possible.
 </body>
 </html>
 ```
+
+##jQuery plugin
+
+There's also a jQuery plugin version. Usage goes like this:
+```html
+<!doctype html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Example</title>
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+    <script src='YoutubeTracker.jquery.js'></script>
+</head>
+<body>
+<iframe class='track-youtube-embed' width="560" height="315" src="//www.youtube.com/embed/tgO4Gd4RhvM" frameborder="0" allowfullscreen></iframe>
+<iframe class='track-youtube-embed' width="560" height="315" src="//www.youtube.com/embed/dXqWJtWmceo" frameborder="0" allowfullscreen></iframe>
+<script>
+    $(function () {
+        var videos = $('.track-youtube-embed');
+        videos.youtubeTracker();
+        videos.on('play', function (data) {
+            console.log('Video is playing!');
+        });
+    });
+</script>
+</body>
+</html>
+```
+
+Available event names are:
+
+* unstarted
+* end
+* play
+* pause
+* buffering
+* cue

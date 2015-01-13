@@ -2,6 +2,15 @@
 
     $.fn.youtubeTracker = function () {
 
+        var events = {
+            '-1': 'unstarted',
+            '0': 'end',
+            '1': 'play',
+            '2': 'pause',
+            '3': 'buffering',
+            '5': 'cued'
+        };
+
         var iframeCollection = this;
 
         var init = function () {
@@ -36,17 +45,6 @@
             }
         };
 
-        var startEmittingCustomEvents = function (iframe) {
-            //var events = {
-            //    '-1': 'unstarted',
-            //    '0': 'ended',
-            //    '1': 'playing',
-            //    '2': 'paused',
-            //    '3': 'buffering',
-            //    '5': 'video cued'
-            //};
-        };
-
         var createGlobalHook = function () {
             window.onYouTubeIframeAPIReady = function () {
                 processIframes();
@@ -60,7 +58,33 @@
         };
 
         var processIframe = function (iframe) {
-            console.log(iframe);
+            var player = new YT.Player(iframe, {
+                events: {
+                    'onReady': function (e) {
+                        // ...
+                    },
+                    'onStateChange': function (e) {
+                        var state = e.data;
+                        var stateName = getStateName(state);
+                        $(iframe).trigger(stateName);
+                    }
+                }
+            });
+        };
+
+        var getStateName = function (state) {
+
+            state = String(state);
+
+            for (var i in events) {
+                var code = i;
+                var name = events[i];
+                if (code === state) {
+                    return name;
+                }
+            }
+
+            return null;
         };
 
         init();

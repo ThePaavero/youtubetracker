@@ -13,10 +13,10 @@
     $(function () {
         var videos = $('.track-youtube-embed');
         videos.youtubeTracker();
-        videos.on('play', function (data) {
+        videos.on('play', function () {
             console.log('Video is playing!');
         });
-        videos.on('pause', function (data) {
+        videos.on('pause', function () {
             console.log('Video is paused.');
         });
     });

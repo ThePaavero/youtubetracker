@@ -12,7 +12,7 @@ YoutubeTracker('.track-youtube-embed', {[Your own event callbacks]});
 
 ----------
 
-YouTube's JsAPI can be a bitch to set up for simple tracking purposes.
+YouTube's JsAPI can be a bitch to set up for basic tracking purposes.
 This simple script is supposed to make tracking your embeds as easy as possible.
 
 ###It will...

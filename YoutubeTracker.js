@@ -58,7 +58,6 @@ window.YoutubeTracker = function (selector, eventCallbacks) {
 
             var iframe = iframes[i];
 
-            // Add the "" to our src URL
             if (iframe.src.indexOf('enablejsapi') < 0) {
                 iframe.src = iframe.src + (iframe.src.indexOf('?') < 0 ? '?enablejsapi=1' : '&enablejsapi=1');
             }

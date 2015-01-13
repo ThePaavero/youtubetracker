@@ -18,28 +18,28 @@ This simple script is supposed to make tracking your embeds as easy as possible.
 <script>
     (function () {
         YoutubeTracker('.track-youtube-embed', {
-            'unstarted': function () {
-                console.log('Status is "unstarted"');
+            'unstarted': function (videoData) {
+                console.log('Status is "unstarted" for video "' + videoData.title + '"');
                 // Ping your tracker
             },
-            'ended': function () {
-                console.log('Status is "ended"');
+            'ended': function (videoData) {
+                console.log('Status is "ended" for video "' + videoData.title + '"');
                 // Ping your tracker
             },
-            'playing': function () {
-                console.log('Status is "playing"');
+            'playing': function (videoData) {
+                console.log('Status is "playing" for video "' + videoData.title + '"');
                 // Ping your tracker
             },
-            'paused': function () {
-                console.log('Status is "paused"');
+            'paused': function (videoData) {
+                console.log('Status is "paused" for video "' + videoData.title + '"');
                 // Ping your tracker
             },
-            'buffering': function () {
-                console.log('Status is "buffering"');
+            'buffering': function (videoData) {
+                console.log('Status is "buffering" for video "' + videoData.title + '"');
                 // Ping your tracker
             },
-            'video cued': function () {
-                console.log('Status is "video cued"');
+            'video cued': function (videoData) {
+                console.log('Status is "video cued" for video "' + videoData.title + '"');
                 // Ping your tracker
             }
         });

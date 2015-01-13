@@ -21,7 +21,7 @@ This simple script is supposed to make tracking your embeds as easy as possible.
 * Let you use your own code to track the events
 * Give you the video's data object as an argument (ID, title, duration, etc.)
 
-## Usage example
+## Usage example <small>([see jQuery version](#jquery-plugin))</small>
 ```html
 <!doctype html>
 <html>
@@ -67,7 +67,7 @@ This simple script is supposed to make tracking your embeds as easy as possible.
 </html>
 ```
 
-##jQuery plugin
+##<a name="jquery-plugin"></a>jQuery plugin
 
 There's also a jQuery plugin version. Usage goes like this:
 ```html

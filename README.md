@@ -16,8 +16,8 @@ YouTube's JsAPI can be a bitch to set up for basic tracking purposes.
 This simple script is supposed to make tracking your embeds as easy as possible.
 
 ###It will...
-* Import YouTube's API script
-* Add "enablejsapi=1" to your iframes' URLs
+* Import YouTube's API script (async)
+* Add "enablejsapi=1" to your iframes' URLs if needed
 * Let you use your own code to track the events
 * Give you the video's data object as an argument (ID, title, duration, etc.)
 

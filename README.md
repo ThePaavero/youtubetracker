@@ -3,7 +3,7 @@
 ## The problem
 You have embedded YouTube videos on your site (normal iframes).
 
-Now you want to track their events.
+Now you want to track their events (play, pause, complete, etc.).
 
 ## The solution
 ```javascript

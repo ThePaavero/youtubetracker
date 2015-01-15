@@ -1,6 +1,8 @@
 window.YoutubeTracker = function (selector, eventCallbacks) {
 
     var iframes;
+    var ticking;
+    var onTick = false;
     var players = [];
     var events = {
         '-1': 'unstarted',
@@ -23,6 +25,10 @@ window.YoutubeTracker = function (selector, eventCallbacks) {
                 // ...
             };
         }
+    }
+
+    if (typeof eventCallbacks.tick === 'function') {
+        onTick = eventCallbacks.tick;
     }
 
     var init = function () {
@@ -71,12 +77,21 @@ window.YoutubeTracker = function (selector, eventCallbacks) {
                         var state = e.data;
                         var stateName = getStateName(state);
 
-                        callbacks[stateName](e.target.getVideoData());
+                        callbacks[stateName](e.target);
                     }
                 }
             });
 
             players.push(player);
+
+            if (onTick) {
+                ticking = setInterval(function () {
+                    if (typeof player.getCurrentTime === 'undefined') {
+                        return;
+                    }
+                    onTick(player);
+                }, 1000);
+            }
         }
     };
 

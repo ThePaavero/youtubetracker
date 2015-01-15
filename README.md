@@ -21,6 +21,16 @@ This simple script is supposed to make tracking your embeds as easy as possible.
 * Let you use your own code to track the events
 * Give you the video's data object as an argument (ID, title, duration, etc.)
 
+#####Available event names are:
+
+* unstarted
+* ended
+* playing
+* paused
+* buffering
+* video cued
+* tick (this one's a bit different, see the example below)
+
 ## Usage example <small>([see jQuery version](#jquery-plugin))</small>
 ```html
 <!doctype html>
@@ -36,29 +46,32 @@ This simple script is supposed to make tracking your embeds as easy as possible.
 <script>
     (function () {
         YoutubeTracker('.track-youtube-embed', {
-            'unstarted': function (videoData) {
+            'unstarted': function (event, videoData) {
                 console.log('Status is "unstarted" for video "' + videoData.title + '"');
-                // Ping your tracker
+                // Ping your tracker or do whatever with event and videoData
             },
-            'ended': function (videoData) {
+            'ended': function (event, videoData) {
                 console.log('Status is "ended" for video "' + videoData.title + '"');
-                // Ping your tracker
+                // Ping your tracker or do whatever with event and videoData
             },
-            'playing': function (videoData) {
+            'playing': function (event, videoData) {
                 console.log('Status is "playing" for video "' + videoData.title + '"');
-                // Ping your tracker
+                // Ping your tracker or do whatever with event and videoData
             },
-            'paused': function (videoData) {
+            'paused': function (event, videoData) {
                 console.log('Status is "paused" for video "' + videoData.title + '"');
-                // Ping your tracker
+                // Ping your tracker or do whatever with event and videoData
             },
-            'buffering': function (videoData) {
+            'buffering': function (event, videoData) {
                 console.log('Status is "buffering" for video "' + videoData.title + '"');
-                // Ping your tracker
+                // Ping your tracker or do whatever with event and videoData
             },
-            'video cued': function (videoData) {
+            'video cued': function (event, videoData) {
                 console.log('Status is "video cued" for video "' + videoData.title + '"');
-                // Ping your tracker
+                // Ping your tracker or do whatever with event and videoData
+            },
+            'tick': function (data) {
+                // This ticks once every second. Utilize stuff in "data", e.g. var currentTime = data.getCurrentTime()
             }
         });
     })();

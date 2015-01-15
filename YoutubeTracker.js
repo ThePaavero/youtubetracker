@@ -77,7 +77,7 @@ window.YoutubeTracker = function (selector, eventCallbacks) {
                         var state = e.data;
                         var stateName = getStateName(state);
 
-                        callbacks[stateName](e.target);
+                        callbacks[stateName](e.target, e.target.getVideoData());
                     }
                 }
             });

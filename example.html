@@ -11,29 +11,32 @@
 <script>
     (function () {
         YoutubeTracker('.track-youtube-embed', {
-            'unstarted': function (videoData) {
+            'unstarted': function (event, videoData) {
                 console.log('Status is "unstarted" for video "' + videoData.title + '"');
-                // Ping your tracker
+                // Ping your tracker or do whatever with event and videoData
             },
-            'ended': function (videoData) {
+            'ended': function (event, videoData) {
                 console.log('Status is "ended" for video "' + videoData.title + '"');
-                // Ping your tracker
+                // Ping your tracker or do whatever with event and videoData
             },
-            'playing': function (videoData) {
+            'playing': function (event, videoData) {
                 console.log('Status is "playing" for video "' + videoData.title + '"');
-                // Ping your tracker
+                // Ping your tracker or do whatever with event and videoData
             },
-            'paused': function (videoData) {
+            'paused': function (event, videoData) {
                 console.log('Status is "paused" for video "' + videoData.title + '"');
-                // Ping your tracker
+                // Ping your tracker or do whatever with event and videoData
             },
-            'buffering': function (videoData) {
+            'buffering': function (event, videoData) {
                 console.log('Status is "buffering" for video "' + videoData.title + '"');
-                // Ping your tracker
+                // Ping your tracker or do whatever with event and videoData
             },
-            'video cued': function (videoData) {
+            'video cued': function (event, videoData) {
                 console.log('Status is "video cued" for video "' + videoData.title + '"');
-                // Ping your tracker
+                // Ping your tracker or do whatever with event and videoData
+            },
+            'tick': function (data) {
+                // This ticks once every second. Utilize stuff in "data", e.g. var currentTime = data.getCurrentTime()
             }
         });
     })();
